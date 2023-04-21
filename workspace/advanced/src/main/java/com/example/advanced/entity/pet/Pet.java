@@ -25,6 +25,10 @@ public class Pet extends Period {
     @Enumerated(EnumType.STRING)
     private PetDisease petDisease;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @JoinColumn(name = "OWNER_ID")
+    private Owner owner;
+
     public Pet(String petName, Gender gender, PetDisease petDisease) {
         this.petName = petName;
         this.gender = gender;
